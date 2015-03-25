@@ -82,7 +82,7 @@ header {
   .pull_menu .line-1, .pull_menu .line-2, .pull_menu .line-3 {
     width: 60%;
     height: 4px;
-    background: #B73737;
+    background: #000;
     margin: 0 auto;
     margin-top: 6px; }
   .pull_menu .line-1 {
