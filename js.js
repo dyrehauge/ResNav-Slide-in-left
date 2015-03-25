@@ -3,32 +3,44 @@ $( window ).load(function() {
 	$('#loadingsplash').remove();
 	clearInterval(dots);
 });
-	$( ".pull_menu" ).click(function(event) {
+
+	var wrapper = $("#wrapper"); // The Pull menu item which trigger the whole menu
+	var pullMenu = $(".pull_menu"); // The Pull menu item which trigger the whole menu
+	var content = $(".content"); // The Content which push the content out. 
+	var overlay = $(".overlay"); // an overlay over the content to fade it out a bit; 
+	var header = $("header"); // The header where all elements are inside.
+	var line1 = $(".line-1"); //Navigation Rectangle 1
+	var line2 = $(".line-2"); // Navigation Rectangle 2
+	var line3 = $(".line-3"); // Navigation Rectangle 3 
+
+	pullMenu.click(function(event) {
 		event.stopPropagation(); event.preventDefault();
-		$('header').toggleClass('pull_menu_in_out');
-		$('.pull_menu').toggleClass('pull_menu_icon');
-		$('.content').toggleClass('push_wrap');
-		$('.line-1').toggleClass('rotate-line-one');
-		$('.line-2').toggleClass('rotate-line-two');
-		$('.line-3').toggleClass('rotate-line-three');
-		$(".overlay").toggleClass("wrapblur");
+		header.toggleClass('pull_menu_in_out');
+		pullMenu.toggleClass('pull_menu_icon');
+		content.toggleClass('push_wrap');
+		line1.toggleClass('rotate-line-one');
+		line2.toggleClass('rotate-line-two');
+		line3.toggleClass('rotate-line-three');
+		overlay.toggleClass("wrapblur");
 	});
 
-	$( "#wrapper" ).click(function(event) {
+	wrapper.click(function(event) {
 		event.stopPropagation(); event.preventDefault();
-		$('header').removeClass('pull_menu_in_out');
-		$('.pull_menu').removeClass('pull_menu_icon');
-		$('.line-1').removeClass('rotate-line-one');
-		$('.line-2').removeClass('rotate-line-two');
-		$('.line-3').removeClass('rotate-line-three');
-		$('.content').removeClass('push_wrap');
-		$(".overlay").removeClass("wrapblur");
+		header.removeClass('pull_menu_in_out');
+		pullMenu.removeClass('pull_menu_icon');
+		line1.removeClass('rotate-line-one');
+		line2.removeClass('rotate-line-two');
+		line3.removeClass('rotate-line-three');
+		content.removeClass('push_wrap');
+		overlay.removeClass("wrapblur");
 	});
 
 
 /*==================================
 =            Typewriter            =
 ==================================*/
+
+		var textstyle = $('.writetextstyle');
 		//define text
         var text = $('.writetext').text();
         //text is split up to letters
@@ -37,7 +49,7 @@ $( window ).load(function() {
             //we add 100*i ms delay to each letter 
             setTimeout(function(){
                 //we add the letter to the container
-                $('.writetextstyle').html($('.writetextstyle').html() + letter);
+                textstyle.html(textstyle.html() + letter);
             
             }, 100*i);
         });
@@ -63,8 +75,8 @@ var dots = window.setInterval( function Whatup() {
 ================================================*/
 $(document).keyup(function(e) {
   var tag = e.target.tagName.toLowerCase();
-  if (e.keyCode == 77 && tag != 'input' && tag != 'textarea') $('.pull_menu').click();     // m
-  if (e.keyCode == 27) $('#wrapper').click();   // esc
+  if (e.keyCode == 77 && tag != 'input' && tag != 'textarea') pullMenu.click();     // m
+  if (e.keyCode == 27) wrapper.click();   // esc
 });
 
 
